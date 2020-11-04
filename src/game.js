@@ -62,15 +62,23 @@ export class Game{
       if(!this.paintMode) return 
       this.drawing = true;
       this.getPosition(e);
+
+      //
+      this.ctx.beginPath();
+      this.ctx.lineWidth = 15;
+      this.ctx.lineCap = 'round';
+      this.ctx.strokeStyle = 'black';
+      this.ctx.lineTo(this.newPath.x, this.newPath.y);
+      this.ctx.stroke();
     })
 
     this.canvas.addEventListener('mousemove', (e) => {
       if(!this.drawing) return
 
       this.ctx.beginPath();
-      this.ctx.lineWidth = 15;
-      this.ctx.lineCap = 'round';
-      this.ctx.strokeStyle = 'black';
+      // this.ctx.lineWidth = 15;
+      // this.ctx.lineCap = 'round';
+      // this.ctx.strokeStyle = 'black';
       this.ctx.moveTo(this.newPath.x, this.newPath.y);
       this.getPosition(e);
       this.ctx.lineTo(this.newPath.x, this.newPath.y);

@@ -1,5 +1,5 @@
-export const RADIUS_X = 134;
-export const RADIUS_Y = 100;
+export const RADIUS_X = 124//134;
+export const RADIUS_Y = 90//100;
 
 export class Watermelon {
   constructor(initialX, initialY, canvas){
@@ -42,7 +42,25 @@ export class Watermelon {
     this.yPos += this.speedY;
 
     let yInt = Math.floor(this.yPos);
-    if (lines[this.xPos] && yInt + this.yRadius - 15> Math.min(...Object.keys(lines[this.xPos]))){
+    let xInt = Math.floor(this.xPos)+30; //add and subtract 30 to accomodate for pic being offset
+    let width = []
+    for (let i = xInt; i<xInt+this.xRadius-30; i++){
+      width.push(i.toString());
+    }
+    let xCheck;
+    let xLines = Object.keys(lines);
+    for(let i = 0; i < width.length; i++){
+      if (xLines.includes(width[i])){
+        xCheck = width[i]; //find first possible x position that is overlapping with watermelon 
+        break;
+      }
+    }
+    if (
+     xCheck &&
+      //check if y coordinate for first possible overlapping x coordinate is 
+      //overlapping watermelon
+      yInt + this.yRadius - 15 > Math.min(...Object.keys(lines[xCheck])) 
+    ){
       this.yPos = oldYPos;
     }
     if (this.yPos > this.floor){
