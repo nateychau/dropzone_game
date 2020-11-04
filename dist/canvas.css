@@ -1,0 +1,20 @@
+#transparent-canvas{
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+}
+
+.drawing{
+  cursor: url(assets/cursor.png), auto;
+}
+
+#canvas{
+  background-color:  #cccccc;
+}
+
+.canvas-container{
+  position: relative; 
+}
+
