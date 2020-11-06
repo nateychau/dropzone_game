@@ -1,10 +1,11 @@
 export class Goal {
-  constructor(xPos, yPos, canvas, width){
+  constructor(xPos, yPos, canvas, width, speed){
     this.xPos = xPos; 
     this.yPos = yPos; 
     this.width = width;
     this.canvas = canvas;
     this.direction = -1;
+    this.speed = speed
 
     this.draw = this.draw.bind(this);
   }
@@ -21,7 +22,7 @@ export class Goal {
   }
 
   move(){
-    this.speed = 3 * this.direction;
+    this.speed = this.direction;
     this.xPos += this.speed; 
     if (
       this.xPos + this.width/2 >= this.canvas.width ||

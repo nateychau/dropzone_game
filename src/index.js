@@ -16,13 +16,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const playButton = document.getElementById('play-btn');
   playButton.addEventListener('click', ()=>{
       game.togglePlay();
-      playButton.innerHTML = game.playing ? 'Pause' : 'Play';
+      playButton.innerHTML = game.playing ? 
+      "Pause <i class='fas fa-pause'></i>" 
+      : 
+      "Play <i class='fas fa-play'></i>" ;
   });
 
   const resetButton = document.getElementById('reset-btn');
   resetButton.addEventListener('click', ()=> {
     game.reset();
-    playButton.innerHTML = 'Play';
+    playButton.innerHTML = "Play <i class='fas fa-play'></i>";
   })
 
   const drawButton = document.getElementById('draw-btn');
@@ -33,6 +36,19 @@ window.addEventListener('DOMContentLoaded', (event) => {
       drawButton.classList.add('active');
     } else {
       drawButton.classList.remove('active');
+    }
+  })
+
+  const helpButton = document.getElementById('help-btn');
+  const helpTooltip = document.getElementById('help-tooltip');
+  helpButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    helpTooltip.classList.toggle("show");
+  })
+
+  document.body.addEventListener('click', () => {
+    if(helpTooltip.classList.contains("show")){
+      helpTooltip.classList.remove("show");
     }
   })
 

@@ -11,6 +11,7 @@ export class Game{
     this.drawCanvas = drawCanvas;
     this.drawCtx = drawCanvas.getContext('2d');
     
+    this.watermelonCanvas = watermelonCanvas
     this.watermelon = new Watermelon(500, 100, watermelonCanvas);
     this.watermelon.draw();
     this.playing = false; 
@@ -23,7 +24,7 @@ export class Game{
     let goalWidth = 50; 
     let goalX = Math.floor(Math.random() * (this.canvas.width - goalWidth)) + goalWidth/2;
     let goalY = this.canvas.height-5; 
-    this.goal = new Goal (goalX, goalY, this.canvas, goalWidth);
+    this.goal = new Goal (goalX, goalY, this.canvas, goalWidth, 1);
     this.goal.draw();
     
     this.reset = this.reset.bind(this);
@@ -93,6 +94,7 @@ export class Game{
     let win = new Image();
     win.src = '../dist/assets/winText.png';
     win.onload = () => {
+      // this.watermelonCanvas.style.opacity = 0.5;
       this.ctx.drawImage(win, this.canvas.width/2 - 140, this.canvas.height/2 - 50);
     }
   }
@@ -101,6 +103,7 @@ export class Game{
     let lose = new Image();
     lose.src = '../dist/assets/losetext.png';
     lose.onload = () => {
+      // this.watermelonCanvas.style.opacity = 0.5;
       this.ctx.drawImage(lose, this.canvas.width/2 - 140, this.canvas.height/2 - 50)
     }
   }

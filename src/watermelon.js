@@ -8,7 +8,7 @@ export class Watermelon {
     //constants
     // this.sprite = new Image();
     // this.sprite.src = "../dist/assets/watermelon.png"
-    this.radius = 20;
+    this.radius = 10;
     
     this.canvas = canvas;
     this.floor = this.canvas.height;
@@ -29,7 +29,7 @@ export class Watermelon {
     this.speedX = 0;
 
     //gravity
-    this.gravity = 0.09;
+    this.gravity = 0.05;
     this.mass = 5;
 
     this.draw = this.draw.bind(this);
