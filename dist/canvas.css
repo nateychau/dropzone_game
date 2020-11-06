@@ -1,9 +1,16 @@
 #transparent-canvas{
   background-color: rgba(0, 0, 0, 0);
   position: absolute;
-  top: 0;
-  left: 0;
-  
+}
+
+#draw-canvas{
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
+}
+
+canvas{
+  border-radius: 3px;
+  margin: 10px 10px; 
 }
 
 .drawing{
@@ -18,3 +25,57 @@
   position: relative; 
 }
 
+body{
+  display: flex; 
+  justify-content: center;
+  flex-direction: column; 
+  font-family: 'Work Sans', sans-serif;
+  background-color: #f1e1c0;
+}
+
+header{
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+header div{
+  font-weight: 600;
+  font-size: 2rem;
+  color: #46c4a6;
+}
+
+.button-container{
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  position: relative;
+}
+
+button{
+  margin-right: 10px;
+  padding: 5px 5px; 
+  border-radius: 6px; 
+  box-shadow: -0.1px 0.1px 1px .1px;
+  outline-style: none;
+}
+
+button:hover{
+  background-color:#d3cece;
+  cursor: pointer;
+}
+
+button:active{
+  position: relative;
+  top: 1px;
+}
+
+.active{
+  background-color:#d3cece;
+}
+
+.canvas-container{ 
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}

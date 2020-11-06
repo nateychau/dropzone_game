@@ -1,20 +1,28 @@
-export const RADIUS_X = 124//134;
-export const RADIUS_Y = 90//100;
+import * as Util from './util.js';
+
+export const RADIUS_X = 50;
+export const RADIUS_Y = 50;
 
 export class Watermelon {
   constructor(initialX, initialY, canvas){
     //constants
-    this.sprite = new Image();
-    this.sprite.src = "../dist/assets/watermelon.png"
-    this.xRadius = RADIUS_X;
-    this.yRadius = RADIUS_Y;
+    // this.sprite = new Image();
+    // this.sprite.src = "../dist/assets/watermelon.png"
+    this.radius = 20;
     
     this.canvas = canvas;
-    this.floor = this.canvas.height - this.yRadius + 15;
+    this.floor = this.canvas.height;
+    this.leftWall = 0;
+    this.rightWall = this.canvas.width;
+    this.bottom = false; 
 
-    //current position
-    this.xPos = initialX;
-    this.yPos = initialY;
+    //initial position for resetting
+    this.initialX = initialX;
+    this.initialY = initialY;
+
+    //current position of center
+    this.xPos = initialX + this.canvas.offsetLeft;
+    this.yPos = initialY + this.canvas.offsetTop;
 
     //velocity
     this.speedY = 0;
@@ -22,50 +30,84 @@ export class Watermelon {
 
     //gravity
     this.gravity = 0.09;
+    this.mass = 5;
 
     this.draw = this.draw.bind(this);
     this.fallOneFrame = this.fallOneFrame.bind(this);
     this.fall = this.fall.bind(this);
     this.stop = this.stop.bind(this);
+    this.checkCollision = this.checkCollision.bind(this);
   }
 
   draw(){
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0,0, canvas.width, canvas.height);
-    ctx.drawImage(this.sprite, this.xPos, this.yPos, 134, 100);
+    ctx.beginPath()
+    ctx.strokeStyle = 'green';
+    ctx.lineWidth = 5;
+    ctx.arc(
+      this.xPos,
+      this.yPos,
+      this.radius, 
+      0, 
+      2*Math.PI
+    )
+    ctx.stroke();
+
+    // ctx.drawImage(
+    //   this.sprite, 
+    //   this.xPos - this.xRadius, //get top left corner by subtracting radius from center coordinates
+    //   this.yPos - this.yRadius, 
+    //   this.xRadius*2, 
+    //   this.yRadius*2
+    // );
   }
+
+  checkCollision(lines){
+    let res = false;
+    for(let i = 0; i < lines.length; i++){
+      let line = lines[i];
+      let distanceBetween = Util.distanceBetweenLineAndCircle(
+        line.a, line.b, line.c, this.xPos, this.yPos
+      );
+      if (
+        distanceBetween <= this.radius && 
+        this.yPos+this.radius >= Math.min(line.yStart, line.yEnd) && 
+        Util.isBetween(line.xStart, line.xEnd, ((this.yPos+this.radius - line.yIntercept)/line.slope))
+      ){
+        res = line;
+      }
+    }
+    return res; 
+  }
+
   
   fallOneFrame(lines){
     this.draw();
     let oldYPos = this.yPos;
     this.speedY += this.gravity; 
     this.yPos += this.speedY;
-
-    let yInt = Math.floor(this.yPos);
-    let xInt = Math.floor(this.xPos)+30; //add and subtract 30 to accomodate for pic being offset
-    let width = []
-    for (let i = xInt; i<xInt+this.xRadius-30; i++){
-      width.push(i.toString());
+    this.xPos += this.speedX;
+    if(this.checkCollision(lines)){
+      let line = this.checkCollision(lines);
+      this.speedX = Util.xMagnitude(line, this.mass) * Math.sign(line.slope);
+      // this.speedY = Util.yMagnitude(line, this.mass);
+      this.speedY = 0; 
     }
-    let xCheck;
-    let xLines = Object.keys(lines);
-    for(let i = 0; i < width.length; i++){
-      if (xLines.includes(width[i])){
-        xCheck = width[i]; //find first possible x position that is overlapping with watermelon 
-        break;
-      }
+    // else{
+    //   this.speedX = 0;
+    // }
+    if (this.yPos + this.radius > this.floor){
+      this.yPos = this.floor - this.radius;
+      this.bottom = true; 
     }
-    if (
-     xCheck &&
-      //check if y coordinate for first possible overlapping x coordinate is 
-      //overlapping watermelon
-      yInt + this.yRadius - 15 > Math.min(...Object.keys(lines[xCheck])) 
-    ){
-      this.yPos = oldYPos;
+    if(this.xPos - this.radius < this.leftWall){
+      this.xPos = this.leftWall + this.radius;
     }
-    if (this.yPos > this.floor){
-      this.yPos = this.floor;
+    if(this.xPos + this.radius > this.rightWall){
+      this.xPos = this.rightWall - this.radius;
     }
+    
   }
 
   fall(lines){
@@ -80,8 +122,9 @@ export class Watermelon {
   }
 
   reset(){
-    this.xPos = 50;
-    this.yPos = 50;
+    this.bottom = false; 
+    this.xPos = this.initialX;
+    this.yPos = this.initialY;
     this.speedY = 0;
     this.speedX = 0;
     const ctx = canvas.getContext('2d');
