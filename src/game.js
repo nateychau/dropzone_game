@@ -96,7 +96,7 @@ export class Game{
       // this.watermelonCanvas.style.opacity = 0.5;
       this.ctx.drawImage(win, this.canvas.width/2 - 140, this.canvas.height/2 - 50)
     }
-    win.src = 'dist/assets/winText.png';
+    win.src = 'dist/assets/wintext.png';
   }
 
   youLose(){
