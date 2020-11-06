@@ -92,7 +92,7 @@ export class Game{
 
   youWin(){
     let win = new Image();
-    win.src = '../dist/assets/winText.png';
+    win.src = 'dist/assets/winText.png';
     win.onload = () => {
       // this.watermelonCanvas.style.opacity = 0.5;
       this.ctx.drawImage(win, this.canvas.width/2 - 140, this.canvas.height/2 - 50);
@@ -101,7 +101,7 @@ export class Game{
 
   youLose(){
     let lose = new Image();
-    lose.src = '../dist/assets/losetext.png';
+    lose.src = 'dist/assets/losetext.png';
     lose.onload = () => {
       // this.watermelonCanvas.style.opacity = 0.5;
       this.ctx.drawImage(lose, this.canvas.width/2 - 140, this.canvas.height/2 - 50)
