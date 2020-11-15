@@ -4,13 +4,14 @@ export const RADIUS_X = 50;
 export const RADIUS_Y = 50;
 
 export class Watermelon {
-  constructor(initialX, initialY, canvas){
+  constructor(initialX, initialY, canvas, level){
     //constants
     // this.sprite = new Image();
     // this.sprite.src = "../dist/assets/watermelon.png"
-    this.radius = 10;
+    this.radius = 20;
     
     this.canvas = canvas;
+    this.ctx = canvas.getContext('2d');
     this.floor = this.canvas.height;
     this.leftWall = 0;
     this.rightWall = this.canvas.width;
@@ -23,6 +24,41 @@ export class Watermelon {
     //current position of center
     this.xPos = initialX + this.canvas.offsetLeft;
     this.yPos = initialY + this.canvas.offsetTop;
+
+    //Adjustments for individual pictures
+    this.spriteAdjust = 0;
+    this.xOffset = 0;
+    this.yOffset = 0;
+
+    this.sprite = new Image();
+    this.sprite.onload = () => {
+      this.ctx.drawImage(this.sprite, this.xPos - this.radius + this.xOffset, this.yPos - this.radius + this.yOffset, this.radius*2 + this.spriteAdjust, this.radius*2 + this.spriteAdjust)
+    }
+    switch(level){
+      case 1:
+        this.sprite.src = '../dist/assets/basketball.png';
+        this.xOffset = 0;
+        this.yOffset = 5;
+        break;
+      case 2: 
+        this.sprite.src = '../dist/assets/golf.png';
+        this.xOffset = -130;
+        this.yOffset = -125;
+        this.spriteAdjust = 260;
+        break;
+      case 3: 
+        this.sprite.src = '../dist/assets/baseball.png'; 
+        this.xOffset = -4;
+        this.yOffset = -3;
+        this.spriteAdjust = 10;
+        break;
+      case 4: 
+        this.sprite.src = '../dist/assets/soccer.png';
+        this.xOffset = -2;
+        this.yOffset = -1;
+        this.spriteAdjust = 5;
+        break;
+    }
 
     //velocity
     this.speedY = 0;
@@ -43,7 +79,7 @@ export class Watermelon {
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0,0, canvas.width, canvas.height);
     ctx.beginPath()
-    ctx.strokeStyle = 'green';
+    ctx.strokeStyle = 'rgba(255,255,255,0)';
     ctx.lineWidth = 5;
     ctx.arc(
       this.xPos,
@@ -53,7 +89,7 @@ export class Watermelon {
       2*Math.PI
     )
     ctx.stroke();
-
+    ctx.drawImage(this.sprite, this.xPos - this.radius + this.xOffset, this.yPos - this.radius + this.yOffset, this.radius*2 + this.spriteAdjust, this.radius*2 + this.spriteAdjust)
     // ctx.drawImage(
     //   this.sprite, 
     //   this.xPos - this.xRadius, //get top left corner by subtracting radius from center coordinates

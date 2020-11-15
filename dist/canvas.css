@@ -8,6 +8,12 @@
   position: absolute;
 }
 
+#bg-canvas{
+  position: absolute;
+  background-color: white;
+  z-index: -9
+}
+
 .fa-play, .fa-pause, .fa-redo-alt{
   font-size: .8rem;
 }
@@ -23,6 +29,7 @@ canvas{
 
 #canvas{
   background-color:  #cccccc;
+  /* background-color: white; */
 }
 
 .canvas-container{

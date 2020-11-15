@@ -12,11 +12,12 @@ export class Game{
     this.drawCtx = drawCanvas.getContext('2d');
     
     this.watermelonCanvas = watermelonCanvas
-    this.watermelon = new Watermelon(500, 100, watermelonCanvas);
+    this.watermelon = new Watermelon(500, 100, watermelonCanvas, 1);
     this.watermelon.draw();
     this.playing = false; 
     this.paintMode = false;
     this.drawing = false;
+    this.level = 1;
     this.newPath = {x: 0, y: 0};
 
     this.lines = []
@@ -24,7 +25,7 @@ export class Game{
     let goalWidth = 50; 
     let goalX = Math.floor(Math.random() * (this.canvas.width - goalWidth)) + goalWidth/2;
     let goalY = this.canvas.height-5; 
-    this.goal = new Goal (goalX, goalY, this.canvas, goalWidth, 1);
+    this.goal = new Goal (goalX, goalY, this.canvas, goalWidth, 0, 1);
     this.goal.draw();
     
     this.reset = this.reset.bind(this);
@@ -47,7 +48,7 @@ export class Game{
     let goalWidth = 50; 
     let goalX = Math.floor(Math.random() * (this.canvas.width - goalWidth)) + goalWidth/2;
     let goalY = this.canvas.height-5; 
-    this.goal = new Goal (goalX, goalY, this.canvas, goalWidth);
+    this.goal = new Goal (goalX, goalY, this.canvas, goalWidth, 0, 1);
     this.goal.draw();
   }
 
@@ -157,16 +158,18 @@ export class Game{
       this.ctx.moveTo(this.startPoint.x, this.startPoint.y);
       this.ctx.lineTo(this.newPath.x, this.newPath.y);
       this.ctx.stroke();
-
+      
       let newLine = new Path(
         this.startPoint.x,
         this.startPoint.y,
         this.newPath.x,
         this.newPath.y
-      )
-      this.lines.push(newLine);
-      
-
+        )
+        this.lines.push(newLine);
+        
+        
+        this.drawing = false;
+        this.newPath = {x: 0, y: 0}
       //NEED TO DRY THIS UP
       // if(this.startPoint.x > this.newPath.x){
       //   for(let i = this.newPath.x; i <= this.startPoint.x; i++){
@@ -196,8 +199,6 @@ export class Game{
       //   }
       // }
 
-      this.drawing = false;
-      this.newPath = {x: 0, y: 0}
     })
   }
 
