@@ -10,7 +10,9 @@
 
 #bg-canvas{
   position: absolute;
-  background-color: white;
+  background-image: url(./assets/bball_background.jpg);
+  opacity: 0.4;
+  background-size: cover;
   z-index: -9
 }
 
@@ -20,7 +22,7 @@
 
 canvas{
   border-radius: 3px;
-  margin: 10px 10px; 
+  /* margin: 10px 10px;  */
 }
 
 .drawing{
@@ -28,17 +30,11 @@ canvas{
 }
 
 #canvas{
-  background-color:  #cccccc;
+  
   /* background-color: white; */
 }
-
-.canvas-container{
-  position: relative; 
-}
-
-
 .canvas-container{ 
+  position: relative; 
   display: flex;
   justify-content: center;
-  padding-top: 10px;
 }

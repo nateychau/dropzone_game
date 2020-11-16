@@ -6,9 +6,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const transparentCanvas = document.getElementById('transparent-canvas');
   const canvas = document.getElementById('canvas');
   const drawCanvas = document.getElementById('draw-canvas');
+  const background = document.getElementById('bg-canvas');
   setCanvasDimensions(transparentCanvas);
   setCanvasDimensions(canvas);
   setCanvasDimensions(drawCanvas);
+  setCanvasDimensions(background);
   let ctx = canvas.getContext('2d');
 
   const game = new Game(transparentCanvas, canvas, drawCanvas);
