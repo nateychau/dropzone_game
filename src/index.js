@@ -57,7 +57,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 const setCanvasDimensions = (canvas) => {
-  let width = window.innerWidth - 100 || window.clientWidth - 100;
+  let width = 1000//window.innerWidth - 100 || window.clientWidth - 100;
   let height = window.innerHeight - 150 || window.clientHeight - 150;
   canvas.width = width; 
   canvas.height = height;  

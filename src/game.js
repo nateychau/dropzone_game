@@ -82,7 +82,7 @@ export class Game{
 
   getPosition(event){ 
     this.newPath.x = event.clientX - this.canvas.offsetLeft + 12; // to accomadate mouse being a square
-    this.newPath.y = event.clientY - this.canvas.offsetTop - 60; 
+    this.newPath.y = event.clientY - this.canvas.offsetTop - 90; 
     // for (let i = this.newPath.x - 10; i <= this.newPath.x+10; i ++){
     //   this.lines[i] ||= {}
     //   for(let j = this.newPath.y - 10; j <= this.newPath.y+10; j++){
