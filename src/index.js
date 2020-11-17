@@ -27,8 +27,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
   // const soccer = document.getElementById('soccer');
   let levels = document.querySelectorAll('.level');
   levels.forEach((level, i) => {
-    level.addEventListener('click', () => {
+    level.addEventListener('click', (e) => {
+      let current = document.querySelector('.current-level');
+      current.classList.remove('current-level');
+      e.currentTarget.classList.add('current-level');
       game.changeLevel(i+1);
+      background.classList = i+1;
     })
   })
 

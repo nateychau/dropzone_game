@@ -12,7 +12,7 @@ export class Game{
     
     this.watermelonCanvas = watermelonCanvas
 
-    this.level = new Level(watermelonCanvas, transparentCanvas, 4);
+    this.level = new Level(watermelonCanvas, transparentCanvas, 1);
 
 
     this.playing = false; 

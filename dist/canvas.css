@@ -11,11 +11,29 @@
 
 #bg-canvas{
   position: absolute;
-  background-image: url(./assets/bball_background.jpg);
+  /* background-image: url(./assets/bball_background.jpg); */
   opacity: 0.4;
   background-size: cover;
   z-index: -9
 }
+
+/* unicode to select class name that starts with number */
+.\31{
+  background-image: url(./assets/bball_background.jpg);
+}
+
+.\32{
+  background-image: url(./assets/golf_background.jpg);
+}
+
+.\33{
+  background-image: url(./assets/baseball_field.jpg);
+}
+
+.\34{
+  background-image: url(./assets/soccer_background.jpg);
+}
+
 
 .fa-play, .fa-pause, .fa-redo-alt{
   font-size: .8rem;
