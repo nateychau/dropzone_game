@@ -52,8 +52,10 @@ export class Level {
         break
       case 3:
         goalX = 700;
+        break
       case 4: 
         goalX = 100;
+        break
     }
     this.goal = new Goal(goalX, 'placeholder', canvas, goalWidth, 0, level);
 

@@ -17,22 +17,22 @@ export class Trophy {
     }
     switch(level){
       case 1:
-        this.sprite.src = '../dist/assets/larryob.png';
+        this.sprite.src = 'https://raw.githubusercontent.com/nateychau/dropzone_game/main/dist/assets/larryob.png';
         break;
       case 2: 
-        this.sprite.src = '../dist/assets/usopen.png';
+        this.sprite.src = 'https://raw.githubusercontent.com/nateychau/dropzone_game/main/dist/assets/usopen.png';
         this.xOffset = -75;
         this.yOffset = -120;
         this.spriteAdjust = 200;
         break;
       case 3: 
-        this.sprite.src = '../dist/assets/mlb.png';
+        this.sprite.src = 'https://raw.githubusercontent.com/nateychau/dropzone_game/main/dist/assets/mlb.png';
         this.xOffset = -15;
         this.yOffset = -25; 
         this.spriteAdjust = 5;
         break;
       case 4: 
-        this.sprite.src = '../dist/assets/worldcup.png';
+        this.sprite.src = 'https://raw.githubusercontent.com/nateychau/dropzone_game/main/dist/assets/worldcup.png';
         this.xOffset = -170;
         this.yOffset = -145;
         this.spriteAdjust = 250;
