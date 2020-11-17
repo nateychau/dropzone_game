@@ -3,16 +3,19 @@ import * as Util from './util.js';
 import { Level } from './level.js';
 
 export class Game{
-  constructor(drawCanvas, transparentCanvas, watermelonCanvas){
+  constructor(drawCanvas, transparentCanvas, watermelonCanvas, trophyCanvas){
     this.drawCanvas = drawCanvas;
     this.drawCtx = drawCanvas.getContext('2d');
+
+    this.watermelonCanvas = watermelonCanvas;
 
     this.transparentCanvas = transparentCanvas;
     this.transparentCtx = transparentCanvas.getContext('2d');
     
-    this.watermelonCanvas = watermelonCanvas
+    this.trophyCanvas = trophyCanvas
+    this.trophyCtx = trophyCanvas.getContext('2d');
 
-    this.level = new Level(watermelonCanvas, transparentCanvas, 1);
+    this.level = new Level(watermelonCanvas, transparentCanvas, trophyCanvas, 1);
 
 
     this.playing = false; 
@@ -31,6 +34,7 @@ export class Game{
 
   reset(){
     this.transparentCtx.clearRect(0, 0, this.transparentCanvas.width, this.transparentCanvas.height);
+    this.trophyCtx.clearRect(0, 0, this.trophyCanvas.width, this.trophyCanvas.height);
     this.playing = false;
     this.level.reset();
   }
@@ -45,7 +49,7 @@ export class Game{
   }
 
   changeLevel(level){
-    this.level = new Level(this.watermelonCanvas, this.transparentCanvas, level);
+    this.level = new Level(this.watermelonCanvas, this.transparentCanvas, this.trophyCanvas, level);
     this.reset();
   }
 

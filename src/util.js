@@ -25,7 +25,7 @@ export const xMagnitude = (line, perpendicularForce) => {
 
 export const getPosition = (event, canvas) => { 
   let x = event.clientX - canvas.offsetLeft + 12; 
-  let y = event.clientY - canvas.offsetTop - 90; 
+  let y = event.clientY - canvas.offsetTop - 70; 
   return {x, y};
 }
 

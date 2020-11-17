@@ -1,12 +1,13 @@
 #transparent-canvas{
   background-color: rgba(0, 0, 0, 0);
   position: absolute;
+  z-index: 3;
 }
 
 #draw-canvas{
   background-color: rgba(0, 0, 0, 0);
   position: absolute;
-  z-index: 2;
+  z-index: 4;
 }
 
 #bg-canvas{
@@ -16,6 +17,13 @@
   background-size: cover;
   z-index: -9
 }
+
+#trophy-canvas{
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 2;
+}
+
 
 /* unicode to select class name that starts with number */
 .\31{
@@ -49,7 +57,7 @@ canvas{
 }
 
 #canvas{
-  
+  z-index: 1;
   /* background-color: white; */
 }
 .canvas-container{ 

@@ -110,8 +110,10 @@ export class Watermelon {
       );
       if (
         distanceBetween <= this.radius && 
-        this.yPos+this.radius >= Math.min(line.yStart, line.yEnd) && 
-        Util.isBetween(line.xStart, line.xEnd, ((this.yPos+this.radius - line.yIntercept)/line.slope))
+        this.yPos+this.radius >= Math.min(line.yStart, line.yEnd) && (
+        Util.isBetween(line.xStart, line.xEnd, this.xPos-this.radius) ||
+        Util.isBetween(line.xStart, line.xEnd, this.xPos+this.radius) ||
+        Util.isBetween(line.xStart, line.xEnd, this.xPos))//((this.yPos+this.radius - line.yIntercept)/line.slope))
       ){
         res = line;
       }

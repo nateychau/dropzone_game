@@ -5,15 +5,17 @@ import { worldTest } from './world.js'
 window.addEventListener('DOMContentLoaded', (event) => {
   const drawCanvas = document.getElementById('draw-canvas');
   const transparentCanvas = document.getElementById('transparent-canvas');
+  const trophyCanvas = document.getElementById('trophy-canvas');
   const watermelonCanvas = document.getElementById('canvas');
   const background = document.getElementById('bg-canvas');
   setCanvasDimensions(drawCanvas);
   setCanvasDimensions(transparentCanvas);
+  setCanvasDimensions(trophyCanvas);
   setCanvasDimensions(watermelonCanvas);
   setCanvasDimensions(background);
   let ctx = canvas.getContext('2d');
 
-  const game = new Game(drawCanvas, transparentCanvas, watermelonCanvas);
+  const game = new Game(drawCanvas, transparentCanvas, watermelonCanvas, trophyCanvas);
   
 
   //------------level buttons--------------------
@@ -80,8 +82,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 const setCanvasDimensions = (canvas) => {
-  let width = 1000//window.innerWidth - 100 || window.clientWidth - 100;
-  let height = 600// window.innerHeight - 150 || window.clientHeight - 150;
+  let width = 800//window.innerWidth - 100 || window.clientWidth - 100;
+  let height = 400// window.innerHeight - 150 || window.clientHeight - 150;
   canvas.width = width; 
   canvas.height = height;  
 }

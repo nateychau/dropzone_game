@@ -1,5 +1,5 @@
 .level-container{
-  top: 108px;
+  top: 78px;
   display: flex;
   border-radius: 6px;
   flex-direction: column;
@@ -7,7 +7,7 @@
   align-items: flex-start;
   position: absolute;
   right: 0;
-  width: calc((100vw - 1000px)/2);
+  width: calc((100vw - 800px)/2);
   z-index: 2;
 }
 
@@ -17,14 +17,14 @@
   align-items: center;
   color: #ffffff;
   height: 50px;
-  width: 200px;
+  width: 120px;
   background-size: 200px 50px;
   background-repeat: no-repeat;
   cursor: pointer;
   margin-bottom: 10px;
   filter: brightness(40%);
   font-weight: 100;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 
@@ -33,7 +33,7 @@
 }
 
 .background-img-container{
-  width: 200px;
+  width: 120px;
   height: 50px;
   position: absolute;
   filter: brightness(90%);

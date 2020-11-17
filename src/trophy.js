@@ -21,15 +21,15 @@ export class Trophy {
         break;
       case 2: 
         this.sprite.src = '../dist/assets/usopen.png';
-        this.xOffset = -100;
-        this.yOffset = -150;
-        this.spriteAdjust = 260;
+        this.xOffset = -75;
+        this.yOffset = -120;
+        this.spriteAdjust = 200;
         break;
       case 3: 
         this.sprite.src = '../dist/assets/mlb.png';
         this.xOffset = -15;
         this.yOffset = -25; 
-        this.spriteAdjust = 10;
+        this.spriteAdjust = 5;
         break;
       case 4: 
         this.sprite.src = '../dist/assets/worldcup.png';
