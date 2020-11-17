@@ -1,92 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <script type="module" src="src/index.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.14.2/matter.min.js" integrity="sha512-pi0tSRZdlNRZeANPwdAIHRAYg6gZZV6QlAiyHXn5TYqLzBKE9jlttO/QgYLMhISD6oNv2kPsVelx+n5nw0FqKA==" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/01de39c32b.js" crossorigin="anonymous"></script>
-    
-    <link rel="stylesheet" href="./dist/reset.css">
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./dist/canvas.css">
-    <link rel="stylesheet" href="./dist/layout.css">
-    <link rel="stylesheet" href="./dist/levels.css">
-    
-    
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.14.2/matter.min.js"
+      integrity="sha512-pi0tSRZdlNRZeANPwdAIHRAYg6gZZV6QlAiyHXn5TYqLzBKE9jlttO/QgYLMhISD6oNv2kPsVelx+n5nw0FqKA=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/01de39c32b.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="./dist/reset.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./dist/canvas.css" />
+    <link rel="stylesheet" href="./dist/layout.css" />
+    <link rel="stylesheet" href="./dist/levels.css" />
+
+    <meta property="og:title" content="Dropzone" />
+    <meta
+      property="og:image"
+      content="//raw.githubusercontent.com/nateychau/dropzone_game/main/dist/assets/drop_splash.PNG"
+    />
+    <meta
+      property="og:description"
+      content="Dropzone is a game where players direct a falling ball to a goal by drawing lines to control the direction that the ball falls in."
+    />
+    <meta property="og:url" content="//nateychau.github.io/dropzone_game/" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-80W5TTH9E4"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-80W5TTH9E4");
+    </script>
+
     <title>Dropzone</title>
-</head>
-<body>
-  <header>
-    <div>Dropzone</div>
-  </header>
-  <div class="button-container">
-    <div class="container">
-      <div id="score-counter">
-        Points: 0
+  </head>
+  <body>
+    <header>
+      <div>Dropzone</div>
+    </header>
+    <div class="button-container">
+      <div class="container">
+        <div id="score-counter">Points: 0</div>
+      </div>
+      <div class="container">
+        <button id="play-btn">
+          Play
+          <i class="fas fa-play"></i>
+        </button>
+        <button id="reset-btn">
+          Reset
+          <i class="fas fa-redo-alt"></i>
+        </button>
+        <button id="draw-btn">
+          Draw
+          <i class="fas fa-paint-brush"></i>
+        </button>
+        <button id="help-btn">
+          <div>
+            Help
+            <i class="fas fa-question-circle"></i>
+          </div>
+          <div id="help-tooltip">
+            Draw lines to direct the falling ball into the goal. Try to collect
+            all trophies along the way!
+          </div>
+        </button>
       </div>
     </div>
-    <div class="container">
-      <button id="play-btn">
-        Play
-        <i class="fas fa-play"></i>
-      </button>
-      <button id="reset-btn">
-        Reset
-        <i class="fas fa-redo-alt"></i>
-      </button>
-      <button id="draw-btn">
-        Draw
-        <i class="fas fa-paint-brush"></i>
-      </button>
-      <button id="help-btn">
-        <div>
-          Help
-          <i class="fas fa-question-circle"></i>
+    <div class="level-container">
+      <div class="container">
+        <div class="level unlocked-level current-level" id="basketball">
+          <div class="level-text">Basketball</div>
+          <div class="background-img-container">
+            <img
+              class="background-img"
+              src="dist/assets/bball_background.jpg"
+            />
+          </div>
         </div>
-        <div id="help-tooltip">
-          Draw lines to direct the falling ball into the goal. Try to collect all trophies along the way!
+        <div class="level unlocked-level" id="golf">
+          <div class="level-text">Golf</div>
+          <div class="background-img-container">
+            <img class="background-img" src="dist/assets/golf_background.jpg" />
+          </div>
         </div>
-      </button>
-    </div>
-  </div>
-  <div class="level-container">
-    <div class="container">
-      <div class="level unlocked-level current-level" id="basketball">
-        <div class="level-text">Basketball</div>
-        <div class="background-img-container">
-          <img class="background-img" src="dist/assets/bball_background.jpg">
+        <div class="level unlocked-level" id="baseball">
+          <div class="level-text">Baseball</div>
+          <div class="background-img-container">
+            <img class="background-img" src="dist/assets/baseball_field.jpg" />
+          </div>
         </div>
-      </div>
-      <div class="level unlocked-level " id="golf">
-        <div class="level-text">Golf</div>
-        <div class="background-img-container">
-          <img class="background-img" src="dist/assets/golf_background.jpg">
-        </div>
-      </div>
-      <div class="level unlocked-level " id="baseball">
-        <div class="level-text">Baseball</div>
-        <div class="background-img-container">
-          <img class="background-img" src="dist/assets/baseball_field.jpg">
-        </div>
-      </div>
-      <div class="level unlocked-level " id="soccer">
-        <div class="level-text">Soccer</div>
-        <div class="background-img-container">
-          <img class="background-img" src="dist/assets/soccer_background.jpg">
+        <div class="level unlocked-level" id="soccer">
+          <div class="level-text">Soccer</div>
+          <div class="background-img-container">
+            <img
+              class="background-img"
+              src="dist/assets/soccer_background.jpg"
+            />
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="canvas-container">
-    <canvas id="draw-canvas"></canvas>
-    <canvas id="transparent-canvas"></canvas>
-    <canvas id="trophy-canvas"></canvas>
-    <canvas id="canvas"></canvas>
-    <canvas id="bg-canvas" class="1"></canvas>
-  </div>
-
-</body>
-
+    <div class="canvas-container">
+      <canvas id="draw-canvas"></canvas>
+      <canvas id="transparent-canvas"></canvas>
+      <canvas id="trophy-canvas"></canvas>
+      <canvas id="canvas"></canvas>
+      <canvas id="bg-canvas" class="1"></canvas>
+    </div>
+  </body>
 </html>

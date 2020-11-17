@@ -3,7 +3,9 @@
 ## Background
 [Dropzone](https://nateychau.github.io/dropzone_game/)
 
-Dropzone is a game where players direct a falling ball to a moving goal by drawing lines to control the direction that the ball falls in. 
+Dropzone is a game where players direct a falling ball into a goal by drawing lines to control the direction that the ball falls in. Players can collect trophies along the path for extra points. 
+
+![splash](https://raw.githubusercontent.com/nateychau/dropzone_game/main/dist/assets/drop_splash.PNG)
 
 ## Instructions
 While in draw mode, players can draw lines to direct the ball. Switch to draw mode by pressing the draw button, and then click play to start the ball's fall. Draw lines with your mouse under the ball as it falls to direct it into the goal. 
