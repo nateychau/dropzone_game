@@ -37,24 +37,24 @@ export class Watermelon {
     }
     switch(level){
       case 1:
-        this.sprite.src = '../dist/assets/basketball.png';
+        this.sprite.src = 'https://raw.githubusercontent.com/nateychau/dropzone_game/main/dist/assets/basketball.png';
         this.xOffset = 0;
         this.yOffset = 5;
         break;
       case 2: 
-        this.sprite.src = '../dist/assets/golf.png';
+        this.sprite.src = 'https://raw.githubusercontent.com/nateychau/dropzone_game/main/dist/assets/golf.png';
         this.xOffset = -130;
         this.yOffset = -125;
         this.spriteAdjust = 260;
         break;
       case 3: 
-        this.sprite.src = '../dist/assets/baseball.png'; 
+        this.sprite.src = 'https://raw.githubusercontent.com/nateychau/dropzone_game/main/dist/assets/baseball.png'; 
         this.xOffset = -4;
         this.yOffset = -3;
         this.spriteAdjust = 10;
         break;
       case 4: 
-        this.sprite.src = '../dist/assets/soccer.png';
+        this.sprite.src = 'https://raw.githubusercontent.com/nateychau/dropzone_game/main/dist/assets/soccer.png';
         this.xOffset = -2;
         this.yOffset = -1;
         this.spriteAdjust = 5;

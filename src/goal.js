@@ -15,23 +15,23 @@ export class Goal {
     }
     switch(level){
       case 1:
-        this.sprite.src = '../dist/assets/hoop.png';
+        this.sprite.src = 'https://raw.githubusercontent.com/nateychau/dropzone_game/main/dist/assets/hoop.png';
         this.xOffset = -25;
         this.yOffset = 5;
         break;
       case 2: 
-        this.sprite.src = '../dist/assets/hole.png';
+        this.sprite.src = 'https://raw.githubusercontent.com/nateychau/dropzone_game/main/dist/assets/hole.png';
         this.xOffset = -25;
         this.yOffset = 5;
         break;
       case 3: 
-        this.sprite.src = '../dist/assets/bat.png'; 
+        this.sprite.src = 'https://raw.githubusercontent.com/nateychau/dropzone_game/main/dist/assets/bat.png'; 
         this.xOffset = -25;
         this.yOffset = 35;
         this.spriteAdjust = 25
         break;
       case 4: 
-        this.sprite.src = '../dist/assets/net.png';
+        this.sprite.src = 'https://raw.githubusercontent.com/nateychau/dropzone_game/main/dist/assets/net.png';
         this.xOffset = -24;
         this.yOffset = 10;
         break;
