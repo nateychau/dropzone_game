@@ -1,12 +1,47 @@
 #transparent-canvas{
   background-color: rgba(0, 0, 0, 0);
   position: absolute;
+  z-index: 3;
 }
 
 #draw-canvas{
   background-color: rgba(0, 0, 0, 0);
   position: absolute;
+  z-index: 4;
 }
+
+#bg-canvas{
+  position: absolute;
+  /* background-image: url(./assets/bball_background.jpg); */
+  opacity: 0.4;
+  background-size: cover;
+  z-index: -9
+}
+
+#trophy-canvas{
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 2;
+}
+
+
+/* unicode to select class name that starts with number */
+.\31{
+  background-image: url(./assets/bball_background.jpg);
+}
+
+.\32{
+  background-image: url(./assets/golf_background.jpg);
+}
+
+.\33{
+  background-image: url(./assets/baseball_field.jpg);
+}
+
+.\34{
+  background-image: url(./assets/soccer_background.jpg);
+}
+
 
 .fa-play, .fa-pause, .fa-redo-alt{
   font-size: .8rem;
@@ -14,7 +49,7 @@
 
 canvas{
   border-radius: 3px;
-  margin: 10px 10px; 
+  /* margin: 10px 10px;  */
 }
 
 .drawing{
@@ -22,104 +57,11 @@ canvas{
 }
 
 #canvas{
-  background-color:  #cccccc;
+  z-index: 1;
+  /* background-color: white; */
 }
-
-.canvas-container{
-  position: relative; 
-}
-
-body{
-  display: flex; 
-  justify-content: center;
-  flex-direction: column; 
-  font-family: 'Work Sans', sans-serif;
-  background-color: #f1e1c0;
-}
-
-header{
-  display: flex;
-  justify-content: center;
-  padding-top: 10px;
-}
-
-header div{
-  font-weight: 600;
-  font-size: 2rem;
-  color: #46c4a6;
-}
-
-.button-container{
-  display: flex;
-  justify-content: center;
-  padding-top: 10px;
-  position: relative;
-}
-
-button{
-  margin-right: 10px;
-  padding: 5px 5px; 
-  border-radius: 6px; 
-  box-shadow: -0.1px 0.1px 1px .1px;
-  outline-style: none;
-}
-
-button:hover{
-  background-color:#d3cece;
-  cursor: pointer;
-}
-
-
-/* handle tooltip hovering */
-button:last-child div:last-child:hover{
-  background-color: #efefef;
-  cursor: default;  
-}
-
-
-button:active{
-  position: relative;
-  top: 1px;
-}
-
-.active{
-  background-color:#d3cece;
-}
-
 .canvas-container{ 
+  position: relative; 
   display: flex;
   justify-content: center;
-  padding-top: 10px;
-}
-
-#help-btn{
-  position: relative
-}
-
-#help-tooltip{
-  position: absolute;
-  width: 180px;
-  top: 40px;
-  left: 5px;
-  display: none;
-  z-index: 10;
-  background-color: black; 
-  color: white; 
-  border-radius: 8px;
-  padding: 10px 10px;
-}
-
-#help-tooltip.show{
-  display: flex; 
-}
-
-#help-tooltip:after{
-  content: "";
-  position: absolute;
-  border-top: none;
-  border-right: 20px solid transparent;
-  border-bottom: 20px solid black;
-  border-left: 20px solid transparent;
-  top: -8px;
-  z-index: -1;
 }

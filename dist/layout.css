@@ -1,0 +1,143 @@
+.main{
+  display: flex;
+  justify-content: center;
+}
+
+
+body{
+  display: flex; 
+  justify-content: center;
+  flex-direction: column; 
+  font-family: 'Heebo', sans-serif;
+  background-color: #264653;
+}
+
+header{
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+}
+
+header div{
+  font-weight: 700;
+  font-size: 3rem;
+  color: #d4af37;
+  /* color: #f4a261; */
+  letter-spacing: 3px;
+}
+
+.button-container{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: absolute;
+  flex-direction: column;
+  width: calc((100vw - 800px)/2);
+  top: 78px;
+  z-index: 2;
+}
+
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 10px 0;
+  margin-left: 10px;
+  background-color: #2a908f;
+  border-radius: 8px;
+  align-items: center;
+  /* width: 120px; */
+}
+
+.button-container .container{
+  margin-left: 0;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  width: 120px;
+}
+
+#score-counter{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  padding-bottom: 10px;
+}
+
+button{
+  /* margin-right: 10px; */
+  padding: 5px 5px; 
+  border-radius: 6px; 
+  box-shadow: -0.1px 0.1px 1px .1px;
+  outline-style: none;
+  width: 120px;
+  position: relative;
+  margin-bottom: 20px;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+
+button:hover{
+  background-color:#d3cece;
+  cursor: pointer;
+}
+
+
+/* handle tooltip hovering */
+button:last-child div:last-child:hover{
+  background-color: #efefef;
+  cursor: default;  
+}
+
+
+button:active{
+  position: relative;
+  top: 1px;
+}
+
+.active{
+  background-color:#ddd012;
+}
+
+#draw-btn:hover{
+  background-color: #ddd012;
+}
+
+#help-btn{
+  position: relative
+}
+
+#help-tooltip{
+  position: absolute;
+  width: 180px;
+  top: 40px;
+  left: 5px;
+  display: none;
+  z-index: 10;
+  background-color: black; 
+  color: white; 
+  border-radius: 8px;
+  padding: 10px 10px;
+}
+
+#help-tooltip.show{
+  display: flex; 
+}
+
+#help-tooltip:after{
+  content: "";
+  position: absolute;
+  border-top: none;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid black;
+  border-left: 20px solid transparent;
+  top: -8px;
+  z-index: -1;
+}
+
+
+.fa-play, .fa-pause, .fa-redo-alt{
+  font-size: .8rem;
+}

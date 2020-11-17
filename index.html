@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="./dist/reset.css">
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./dist/canvas.css">
+    <link rel="stylesheet" href="./dist/layout.css">
+    <link rel="stylesheet" href="./dist/levels.css">
     
     
     <title>Dropzone</title>
@@ -20,32 +22,69 @@
     <div>Dropzone</div>
   </header>
   <div class="button-container">
-    <button id="play-btn">
-      Play
-      <i class="fas fa-play"></i>
-    </button>
-    <button id="reset-btn">
-      Reset
-      <i class="fas fa-redo-alt"></i>
-    </button>
-    <button id="draw-btn">
-      Draw
-      <i class="fas fa-paint-brush"></i>
-    </button>
-    <button id="help-btn">
-      <div>
-        Help
-        <i class="fas fa-question-circle"></i>
+    <div class="container">
+      <div id="score-counter">
+        Points: 0
       </div>
-      <div id="help-tooltip">
-        Draw lines to direct the falling ball into the moving goal
+    </div>
+    <div class="container">
+      <button id="play-btn">
+        Play
+        <i class="fas fa-play"></i>
+      </button>
+      <button id="reset-btn">
+        Reset
+        <i class="fas fa-redo-alt"></i>
+      </button>
+      <button id="draw-btn">
+        Draw
+        <i class="fas fa-paint-brush"></i>
+      </button>
+      <button id="help-btn">
+        <div>
+          Help
+          <i class="fas fa-question-circle"></i>
+        </div>
+        <div id="help-tooltip">
+          Draw lines to direct the falling ball into the goal. Try to collect all trophies along the way!
+        </div>
+      </button>
+    </div>
+  </div>
+  <div class="level-container">
+    <div class="container">
+      <div class="level unlocked-level current-level" id="basketball">
+        <div class="level-text">Basketball</div>
+        <div class="background-img-container">
+          <img class="background-img" src="dist/assets/bball_background.jpg">
+        </div>
       </div>
-    </button>
+      <div class="level unlocked-level " id="golf">
+        <div class="level-text">Golf</div>
+        <div class="background-img-container">
+          <img class="background-img" src="dist/assets/golf_background.jpg">
+        </div>
+      </div>
+      <div class="level unlocked-level " id="baseball">
+        <div class="level-text">Baseball</div>
+        <div class="background-img-container">
+          <img class="background-img" src="dist/assets/baseball_field.jpg">
+        </div>
+      </div>
+      <div class="level unlocked-level " id="soccer">
+        <div class="level-text">Soccer</div>
+        <div class="background-img-container">
+          <img class="background-img" src="dist/assets/soccer_background.jpg">
+        </div>
+      </div>
+    </div>
   </div>
   <div class="canvas-container">
     <canvas id="draw-canvas"></canvas>
     <canvas id="transparent-canvas"></canvas>
+    <canvas id="trophy-canvas"></canvas>
     <canvas id="canvas"></canvas>
+    <canvas id="bg-canvas" class="1"></canvas>
   </div>
 
 </body>
