@@ -1,7 +1,7 @@
 export class Goal {
   constructor(xPos, yPos, canvas, width, speed, level){
     this.xPos = xPos; 
-    this.yPos = yPos; 
+    this.yPos = canvas.height-5;//yPos; 
     this.width = width;
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');

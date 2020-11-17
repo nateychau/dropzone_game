@@ -16,14 +16,15 @@ export class Watermelon {
     this.leftWall = 0;
     this.rightWall = this.canvas.width;
     this.bottom = false; 
+    this.points = 0;
 
     //initial position for resetting
-    this.initialX = initialX;
-    this.initialY = initialY;
+    this.initialX = initialX// + this.canvas.offsetLeft;
+    this.initialY = initialY// + this.canvas.offsetTop;
 
     //current position of center
-    this.xPos = initialX + this.canvas.offsetLeft;
-    this.yPos = initialY + this.canvas.offsetTop;
+    this.xPos = this.initialX; 
+    this.yPos = this.initialY;
 
     //Adjustments for individual pictures
     this.spriteAdjust = 0;
@@ -73,6 +74,7 @@ export class Watermelon {
     this.fall = this.fall.bind(this);
     this.stop = this.stop.bind(this);
     this.checkCollision = this.checkCollision.bind(this);
+    this.collectTrophies = this.collectTrophies.bind(this);
   }
 
   draw(){
@@ -117,13 +119,25 @@ export class Watermelon {
     return res; 
   }
 
+  collectTrophies(trophies){
+    for(let i = 0; i < trophies.length; i++){
+      let trophy = trophies[i]
+      if (Util.isBetween(this.xPos - this.radius, this.xPos + this.radius, trophy.xPos) &&
+        Util.isBetween(this.yPos - this.radius, this.yPos + this.radius, trophy.yPos)){
+          trophy.clear();
+          this.points += 1;
+        }
+    }
+  }
+
   
-  fallOneFrame(lines){
+  fallOneFrame(lines, trophies){
     this.draw();
     let oldYPos = this.yPos;
     this.speedY += this.gravity; 
     this.yPos += this.speedY;
     this.xPos += this.speedX;
+    this.collectTrophies(trophies);
     if(this.checkCollision(lines)){
       let line = this.checkCollision(lines);
       this.speedX = Util.xMagnitude(line, this.mass) * Math.sign(line.slope);
@@ -161,6 +175,7 @@ export class Watermelon {
     this.bottom = false; 
     this.xPos = this.initialX;
     this.yPos = this.initialY;
+    this.points = 0;
     this.speedY = 0;
     this.speedX = 0;
     const ctx = canvas.getContext('2d');
