@@ -141,3 +141,26 @@ button:active{
 .fa-play, .fa-pause, .fa-redo-alt{
   font-size: .8rem;
 }
+
+.socials-list{
+  padding-top: 40px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.social-item{
+  font-size: 48px;
+}
+
+.social-item:nth-child(2){
+  margin: 0 20px;
+}
+
+.social-item a, .social-item a:visited{
+  color: #d4af37;
+}
+
+.social-item a:hover{
+  color: #c7a124;
+}
