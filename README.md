@@ -92,7 +92,6 @@ this.canvas.addEventListener('mouseup', (e) => {
 
 
 Potential future features:
-- Implementing levels (this would probably involve jewels to collect along a path, and a stationary goal, or a goal with more predictable movement)
 - Trampolines for players to add along the path
 - Obstacles 
 - Free drawing (not restricted to lines. This would probably involve implementing a physics engine like Matter js)
